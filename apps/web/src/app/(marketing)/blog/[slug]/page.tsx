@@ -46,10 +46,20 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
   const toc = getTableOfContents(post.content);
 
   return (
-    <article className={cn("new-container", "instrument-sans")}>
-      <BlogHeader link={LINKS.BLOGS} label="All Blogs" />
-      <BlogHero blog={post} />
-      <BlogContent code={post.mdx} toc={toc} />
-    </article>
+    <>
+      <ArticleJsonLd
+        title={post.title}
+        description={post.summary}
+        image={post.thumbnail || post.ogImage || "/official/og-banner.png"}
+        datePublished={new Date().toISOString()}
+        dateModified={new Date().toISOString()}
+        slug={post.slug}
+      />
+      <article className={cn("new-container", "instrument-sans")}>
+        <BlogHeader link={LINKS.BLOGS} label="All Blogs" />
+        <BlogHero blog={post} />
+        <BlogContent code={post.mdx} toc={toc} />
+      </article>
+    </>
   );
 }
