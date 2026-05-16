@@ -4,7 +4,22 @@ import BlogHero from "@/components/layout/marketing/blogs/blog-hero";
 import BlogCard from "@/components/layout/marketing/blogs/blog-card";
 import { allBlogs } from "content-collections";
 import { LINKS } from "@/constants/links";
+import { generateWebsiteMetadata } from "@/constants/meta-data";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = generateWebsiteMetadata({
+  title: "Blog - Invoicely",
+  description:
+    "Read the latest articles about invoicing, freelancing, and business tips from the Invoicely team.",
+  keywords: [
+    "invoicing tips",
+    "freelancing advice",
+    "business invoicing",
+    "invoice templates",
+    "invoicely blog",
+  ],
+});
 
 const Page = () => {
   return (
