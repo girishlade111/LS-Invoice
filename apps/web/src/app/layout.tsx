@@ -17,6 +17,11 @@ import {
 } from "next/font/google";
 import { defaultWebsiteMetadata, defaultWebsiteViewport } from "@/constants/meta-data";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import {
+  OrganizationJsonLd,
+  WebSiteJsonLd,
+  SoftwareApplicationJsonLd,
+} from "@/components/seo/json-ld";
 import { TOAST_ICONS, TOAST_OPTIONS } from "@/constants/toast";
 import { TRPCProvider } from "@/trpc/client";
 import { ThemeProvider } from "next-themes";
