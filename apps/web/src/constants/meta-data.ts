@@ -1,5 +1,11 @@
 import { Metadata, Viewport } from "next";
 
+const SITE_URL = "https://invoicely.gg";
+const SITE_NAME = "Invoicely";
+const DEFAULT_TITLE = "Invoicely - Create Beautiful & Professional Invoices | Free Invoice Generator";
+const DEFAULT_DESCRIPTION =
+  "Invoicely is a free, open-source invoice generator that allows you to create unlimited beautiful and professional invoices in minutes. Download as PDF, no signup required. Backed by Cloudflare OSS.";
+
 export const defaultWebsiteViewport: Viewport = {
   themeColor: "#09090B",
   maximumScale: 1,
@@ -9,17 +15,59 @@ export const defaultWebsiteViewport: Viewport = {
 };
 
 export const defaultWebsiteMetadata: Metadata = {
-  metadataBase: new URL("https://invoicely.gg"),
-  title: "Invoicely - Create Beautiful & Professional Invoices",
-  description:
-    "Invoicely is a simple and easy to use invoice generator where you can create beautiful and professional invoices in minutes. ~ Proudly OSS - Backed by Cloudflare OSS",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/official/invoicely-logo.png",
+    shortcut: "/official/invoicely-logo.png",
+    apple: "/official/invoicely-logo.png",
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
   openGraph: {
-    images: "/official/og-banner.png",
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: "/official/og-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Invoicely - Free Invoice Generator",
+        type: "image/png",
+      },
+    ],
   },
-  // This is chatgpt aah generated shit lmao :3
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/official/og-banner.png"],
+    site: "@invoicely",
+    creator: "@invoicely",
+  },
   keywords: [
     "generate invoice",
     "invoice generator",
