@@ -1,6 +1,7 @@
 import { BlogContent } from "@/components/layout/marketing/blogs/blog-content";
 import BlogHeader from "@/components/layout/marketing/blogs/blog-header";
 import BlogHero from "@/components/layout/marketing/blogs/blog-hero";
+import { ArticleJsonLd } from "@/components/seo/json-ld";
 import { getTableOfContents } from "fumadocs-core/server";
 import { allBlogs } from "content-collections";
 import { notFound } from "next/navigation";
