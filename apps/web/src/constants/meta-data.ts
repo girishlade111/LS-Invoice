@@ -173,6 +173,7 @@ export interface IGenerateWebsiteMetadata {
   description?: string;
   image?: string;
   keywords?: string[];
+  noindex?: boolean;
 }
 
 export const generateWebsiteMetadata = ({
@@ -180,14 +181,44 @@ export const generateWebsiteMetadata = ({
   description,
   image,
   keywords,
+  noindex = false,
 }: IGenerateWebsiteMetadata): Metadata => {
+  const metaDescription = description || DEFAULT_DESCRIPTION;
+  const metaImage = image || "/official/og-banner.png";
+
   return {
     ...defaultWebsiteMetadata,
+    title,
+    description: metaDescription,
     keywords: [...(defaultWebsiteMetadata.keywords || []), ...(keywords || [])],
-    title: title || defaultWebsiteMetadata.title,
-    description: description || defaultWebsiteMetadata.description,
+    robots: noindex
+      ? {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        }
+      : defaultWebsiteMetadata.robots,
     openGraph: {
-      images: image || defaultWebsiteMetadata.openGraph?.images,
+      ...defaultWebsiteMetadata.openGraph,
+      title,
+      description: metaDescription,
+      images: [
+        {
+          url: metaImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      ...defaultWebsiteMetadata.twitter,
+      title,
+      description: metaDescription,
+      images: [metaImage],
     },
   };
 };
