@@ -85,6 +85,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+        <SoftwareApplicationJsonLd />
+      </head>
       <body
         className={cn(
           geistSans.variable,
