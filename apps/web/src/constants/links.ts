@@ -2,6 +2,8 @@ const SOCIALS = {
   GITHUB: "https://github.com/legions-developer/invoicely",
 };
 
+export const SITE_URL = "https://invoicely.gg";
+
 export const LINKS = {
   SOCIALS: SOCIALS,
   HOME: "/",
